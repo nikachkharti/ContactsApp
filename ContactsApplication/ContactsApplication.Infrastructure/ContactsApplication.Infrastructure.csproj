@@ -11,4 +11,9 @@
 	  <ProjectReference Include="..\ContactsApplication.Domain\ContactsApplication.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+	  <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.3" />
+	</ItemGroup>
+
 </Project>
