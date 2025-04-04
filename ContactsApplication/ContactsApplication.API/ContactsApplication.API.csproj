@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Controllers\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ContactsApplication.Application\ContactsApplication.Application.csproj" />
+	  <ProjectReference Include="..\ContactsApplication.Domain\ContactsApplication.Domain.csproj" />
+	  <ProjectReference Include="..\ContactsApplication.Infrastructure\ContactsApplication.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>
