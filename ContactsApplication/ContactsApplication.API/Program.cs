@@ -12,9 +12,6 @@ namespace ContactsApplication.API
             // Log the current environment
             Console.WriteLine($"Current Environment: {builder.Environment.EnvironmentName}");
 
-            var mongoConnectionString = builder.Configuration.GetValue<string>("MongoDbConnectionString");
-            Console.WriteLine($"MongoDbConnectionString: {mongoConnectionString}");
-
             builder.AddControllers();
             builder.AddOpenApi();
             builder.AddSwagger();
