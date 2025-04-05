@@ -3,6 +3,9 @@ using ContactsApplication.Infrastructure.Helper;
 using ContactsApplication.Infrastructure.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 
 namespace ContactsApplication.Infrastructure
 {
@@ -10,6 +13,9 @@ namespace ContactsApplication.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            // Configure MongoDB serialization
+            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+
             // Configure MongoDB settings
             services.Configure<MongoDbSettings>(configuration.GetSection("MongoDB"));
 
