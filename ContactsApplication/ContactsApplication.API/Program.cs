@@ -12,6 +12,9 @@ namespace ContactsApplication.API
             // Log the current environment
             Console.WriteLine($"Current Environment: {builder.Environment.EnvironmentName}");
 
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            builder.WebHost.UseUrls($"http://*:{port}");
+
             builder.AddControllers();
             builder.AddOpenApi();
             builder.AddSwagger();
