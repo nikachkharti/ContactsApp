@@ -1,0 +1,6 @@
+services:
+  contactsAppDb:
+    image: mongo:latest
+
+volumes:
+  contactsAppDb_vol:
