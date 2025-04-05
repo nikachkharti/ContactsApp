@@ -19,10 +19,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Controllers\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\ContactsApplication.Application\ContactsApplication.Application.csproj" />
 	  <ProjectReference Include="..\ContactsApplication.Domain\ContactsApplication.Domain.csproj" />
 	  <ProjectReference Include="..\ContactsApplication.Infrastructure\ContactsApplication.Infrastructure.csproj" />
