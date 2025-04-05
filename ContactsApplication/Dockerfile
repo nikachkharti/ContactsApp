@@ -4,7 +4,6 @@ USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
-EXPOSE 4040
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -33,5 +32,5 @@ RUN dotnet publish "ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENV ASPNETCORE_URLS=http://+:4040
+ENV ASPNETCORE_URLS=http://+:8080
 ENTRYPOINT ["dotnet", "ContactsApplication.API.dll"]
