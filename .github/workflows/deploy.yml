@@ -1,4 +1,4 @@
-name: Deploy to Heroku
+﻿name: Deploy to Heroku
 
 on:
   push:
@@ -13,18 +13,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Login to Heroku Container Registry
-        run: echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=_ --password-stdin registry.heroku.com
+      - name: Find Dockerfile
+        run: find . -name "Dockerfile"
 
-      - name: Build Docker image
-        run: docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web -f ContactsApplication/ContactsApplication.API/Dockerfile ContactsApplication/
+      - name: Verify Dockerfile exists
+        run: |
+          if [ ! -f Bootcamp/ReportHub.API/Dockerfile ]; then echo "❌ Dockerfile not found!"; exit 1; fi
+          echo "✅ Dockerfile found at Bootcamp/ReportHub.API/"
 
-      - name: Push Docker image
-        run: docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
-
-      - name: Release the app
+      - name: Install Heroku CLI
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
-          heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Log in to Heroku Container Registry
         env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_API_KEY: HRKU-cf874a65-aee6-4857-8763-e992aceb791c
+        run: heroku container:login
+
+      - name: Build the Docker image
+        run: |
+            docker build -t registry.heroku.com/contacts-application/web -f ContactsApplication/ContactsApplication.API/Dockerfile ContactsApplication/
+
+      - name: Push Docker image to Heroku
+        run: |
+          docker push registry.heroku.com/contacts-application/web
+
+      - name: Release the container
+        run: |
+          heroku container:release web -a contacts-application
