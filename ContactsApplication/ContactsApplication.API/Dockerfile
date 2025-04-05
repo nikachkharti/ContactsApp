@@ -10,10 +10,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["ContactsApplication/ContactsApplication.API/ContactsApplication.API.csproj", "ContactsApplication/ContactsApplication.API/"]
-COPY ["ContactsApplication/ContactsApplication.Application/ContactsApplication.Application.csproj", "ContactsApplication/ContactsApplication.Application/"]
-COPY ["ContactsApplication/ContactsApplication.Domain/ContactsApplication.Domain.csproj", "ContactsApplication/ContactsApplication.Domain/"]
-COPY ["ContactsApplication/ContactsApplication.Infrastructure/ContactsApplication.Infrastructure.csproj", "ContactsApplication/ContactsApplication.Infrastructure/"]
+COPY ["ContactsApplication.API/ContactsApplication.API.csproj", "ContactsApplication/ContactsApplication.API/"]
+COPY ["ContactsApplication.Application/ContactsApplication.Application.csproj", "ContactsApplication/ContactsApplication.Application/"]
+COPY ["ContactsApplication.Domain/ContactsApplication.Domain.csproj", "ContactsApplication/ContactsApplication.Domain/"]
+COPY ["ContactsApplication.Infrastructure/ContactsApplication.Infrastructure.csproj", "ContactsApplication/ContactsApplication.Infrastructure/"]
 RUN dotnet restore "ContactsApplication/ContactsApplication.API/ContactsApplication.API.csproj"
 COPY . .
 WORKDIR "/src/ContactsApplication/ContactsApplication.API"
