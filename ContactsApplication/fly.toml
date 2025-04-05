@@ -1,12 +1,10 @@
-# fly.toml app configuration file generated for contactsapplication-api on 2025-04-05T18:16:08+04:00
+# fly.toml app configuration file generated for contactsapplication on 2025-04-05T18:51:38+04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'contactsapplication-api'
+app = 'contactsapplication'
 primary_region = 'ams'
-
-[build]
 
 [http_service]
   internal_port = 8080
