@@ -11,7 +11,7 @@ namespace ContactsApplication.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             // Configure MongoDB settings
-            services.Configure<MongoDbSettings>(configuration.GetSection("MongoDB")); // TODO CONTINUE HERE
+            services.Configure<MongoDbSettings>(configuration.GetSection("MongoDB"));
 
             // Register repositories
             services.AddScoped<IPersonRepository, PersonRepository>();
