@@ -14,7 +14,7 @@ COPY ["ContactsApplication.API/ContactsApplication.API.csproj", "ContactsApplica
 COPY ["ContactsApplication.Application/ContactsApplication.Application.csproj", "ContactsApplication/ContactsApplication.Application/"]
 COPY ["ContactsApplication.Domain/ContactsApplication.Domain.csproj", "ContactsApplication/ContactsApplication.Domain/"]
 COPY ["ContactsApplication.Infrastructure/ContactsApplication.Infrastructure.csproj", "ContactsApplication/ContactsApplication.Infrastructure/"]
-RUN dotnet restore "ContactsApplication/ContactsApplication.API/ContactsApplication.API.csproj"
+RUN dotnet restore "ContactsApplication.API/ContactsApplication.API.csproj"
 COPY . .
 WORKDIR "/src/ContactsApplication/ContactsApplication.API"
 RUN dotnet build "ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
