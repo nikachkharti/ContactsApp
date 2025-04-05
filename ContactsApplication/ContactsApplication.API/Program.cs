@@ -17,6 +17,7 @@ namespace ContactsApplication.API
 
             var app = builder.Build();
 
+            app.UseDataSeeder();
             app.UseSwagger();
             app.UseSwaggerUI();
             app.UseHttpsRedirection();

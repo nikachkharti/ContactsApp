@@ -1,4 +1,5 @@
-﻿using ContactsApplication.Domain.Entities;
+﻿using ContactsApplication.Application.Contracts;
+using ContactsApplication.Domain.Entities;
 using ContactsApplication.Infrastructure.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +20,7 @@ namespace ContactsApplication.Infrastructure.Middleware
             try
             {
                 using var scope = serviceProvider.CreateScope();
-                var personRepository = scope.ServiceProvider.GetRequiredService<PersonRepository>();
+                var personRepository = scope.ServiceProvider.GetRequiredService<IPersonRepository>();
 
                 var existingPerson = await personRepository.GetAll(pageNumber: 1, pageSize: 1);
                 if (!existingPerson.Any())

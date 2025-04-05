@@ -7,7 +7,7 @@ namespace ContactsApplication.Infrastructure.Repository
 {
     public class PersonRepository : MongoRepositoryBase<Person>, IPersonRepository
     {
-        public PersonRepository(IOptions<MongoDbSettings> options, string collectionName) : base(options, collectionName)
+        public PersonRepository(IOptions<MongoDbSettings> options) : base(options, "contacts")
         {
         }
     }
