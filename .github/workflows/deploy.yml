@@ -18,8 +18,8 @@ jobs:
 
       - name: Verify Dockerfile exists
         run: |
-          if [ ! -f Bootcamp/ReportHub.API/Dockerfile ]; then echo "❌ Dockerfile not found!"; exit 1; fi
-          echo "✅ Dockerfile found at Bootcamp/ReportHub.API/"
+          if [ ! -f ContactsApplication/ContactsApplication.API/Dockerfile ]; then echo "❌ Dockerfile not found!"; exit 1; fi
+          echo "✅ Dockerfile found at ContactsApplication/ContactsApplication.API/"
 
       - name: Install Heroku CLI
         run: |
