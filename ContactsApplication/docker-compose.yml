@@ -3,7 +3,7 @@ services:
     image: mongo:latest
 
   contacts.application.api:
-    image: ${DOCKER_REGISTRY-}catalogapi
+    image: ${DOCKER_REGISTRY-}contactsapplicationapi
     build:
      context: .
      dockerfile: ContactsApplication.API/Dockerfile  
