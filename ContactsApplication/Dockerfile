@@ -4,16 +4,17 @@ USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
+EXPOSE 4040
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copy project files
-COPY ../ContactsApplication.Application/ContactsApplication.Application.csproj ContactsApplication.Application/
-COPY ../ContactsApplication.Domain/ContactsApplication.Domain.csproj ContactsApplication.Domain/
-COPY ../ContactsApplication.Infrastructure/ContactsApplication.Infrastructure.csproj ContactsApplication.Infrastructure/
-COPY ContactsApplication.API.csproj ContactsApplication.API/
+COPY ContactsApplication.Application/ContactsApplication.Application.csproj ContactsApplication.Application/
+COPY ContactsApplication.Domain/ContactsApplication.Domain.csproj ContactsApplication.Domain/
+COPY ContactsApplication.Infrastructure/ContactsApplication.Infrastructure.csproj ContactsApplication.Infrastructure/
+COPY ContactsApplication.API/ContactsApplication.API.csproj ContactsApplication.API/
 
 # Restore packages
 RUN dotnet restore "ContactsApplication.API/ContactsApplication.API.csproj"
