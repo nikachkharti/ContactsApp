@@ -16,21 +16,21 @@ COPY ContactsApplication/ContactsApplication.Infrastructure/ContactsApplication.
 COPY ContactsApplication/ContactsApplication.API/ContactsApplication.API.csproj ContactsApplication.API/
 
 # Restore packages
-RUN dotnet restore "ContactsApplication.API/ContactsApplication.API.csproj"
+RUN dotnet restore "ContactsApplication/ContactsApplication.API/ContactsApplication.API.csproj"
 
 # Copy all source files
 COPY . .
 
 # Build the project
 WORKDIR "/src/ContactsApplication.API"
-RUN dotnet build "ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "ContactsApplication/ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "ContactsApplication/ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENV ASPNETCORE_URLS=http://+:8080
-ENTRYPOINT ["dotnet", "ContactsApplication.API.dll"]
+ENTRYPOINT ["dotnet", "ContactsApplication/ContactsApplication.API.dll"]
