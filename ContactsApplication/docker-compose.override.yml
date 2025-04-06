@@ -17,7 +17,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       # - ASPNETCORE_ENVIRONMENT=Production
       # - MongoDb__ConnectionString=mongodb://admin:admin@localhost:27019/
-      - MongoDb__ConnectionString=mongodb+srv://admin:admin@contactsapplicationclus.avilejp.mongodb.net/?retryWrites=true&w=majority&ssl=true&appName=contactsApplicationCluster
+      - MongoDb__ConnectionString=mongodb+srv://admin:admin@contactsapplicationclus.avilejp.mongodb.net/contactsdb?retryWrites=true&w=majority&ssl=true&appName=contactsApplicationCluster
       - MongoDb__DatabaseName=contactsDb
     depends_on:
       - contactsAppDb
