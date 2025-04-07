@@ -27,7 +27,7 @@ RUN dotnet build "ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /ap
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "ContactsApplication/ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "ContactsApplication.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
