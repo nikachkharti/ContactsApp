@@ -9,8 +9,6 @@ namespace ContactsApplication.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
 
             builder.AddControllers();
             builder.AddOpenApi();
