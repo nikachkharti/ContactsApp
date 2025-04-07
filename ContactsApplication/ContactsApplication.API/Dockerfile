@@ -9,6 +9,12 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
+# Ensure CA certificates are installed
+RUN apt-get update && apt-get install -y \
+    libssl-dev \
+    ca-certificates \
+    && apt-get clean
+
 # Copy project files
 COPY ContactsApplication.Application/ContactsApplication.Application.csproj ContactsApplication.Application/
 COPY ContactsApplication.Domain/ContactsApplication.Domain.csproj ContactsApplication.Domain/
