@@ -1,0 +1,12 @@
+services:
+  contactsAppDb:
+    image: mongo:latest
+
+  contacts.application.api:
+    image: ${DOCKER_REGISTRY-}contactsapplicationapi
+    build:
+     context: .
+     dockerfile: ContactsApplication.API/Dockerfile
+
+volumes:
+  contactsAppDb_vol:
